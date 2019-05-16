@@ -65,7 +65,8 @@ class Trie(object):
         else:
             return None
     
-    def autocomplete(self,target_prefix):
+    def autocomplete(self,target_prefix:str) -> str:
+        """return all target words which start with target prefix"""
         curr = self.prefix_search(target_prefix)
 
         if curr:
@@ -118,7 +119,7 @@ class Trie(object):
 
     
     def insert(self,target:str):
-
+        """Inserts a word into the trie"""
         # preserve original word
         counter = 0
         curr = self.head
