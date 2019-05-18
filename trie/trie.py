@@ -30,7 +30,7 @@ def dfs_print(first_node:TrieNode, pref):
             print_words(v, word)
             
     
-    print_words(first_node=first_node,word="")
+    print_words(first_node=first_node,word = pref)
 
     return "\n".join(words)
 
@@ -65,12 +65,11 @@ class Trie(object):
         else:
             return None
     
-    def autocomplete(self,target_prefix:str) -> str:
-        """return all target words which start with target prefix"""
+    def autocomplete(self,target_prefix):
         curr = self.prefix_search(target_prefix)
 
         if curr:
-            return dfs_print(curr,target_prefix)
+            return dfs_print(curr,target_prefix[:-1])
         else:
             return ""
 
@@ -170,6 +169,7 @@ class Trie(object):
 a = Trie()
 a.insert("abc")
 a.insert("cbe")
+print(a.autocomplete(""))
 
 
 
